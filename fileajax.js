@@ -52,7 +52,6 @@ function showDetail(id) {
 }
 
 function showFormRent(id) {
-    console.log(localStorage.getItem('user'));
     document.getElementById('main').innerHTML = `<div class="col-12">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -85,19 +84,19 @@ function showFormRent(id) {
                     </div>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">First Name: </label>
-                        <input type="text" disabled class="form-control" id="firstName" value="">
+                        <input type="text" disabled class="form-control" id="firstName" value="${localStorage.getItem('firstName')}">
                     </div>
                     <div class="mb-3">
                         <label for="lastName" class="form-label">Last Name: </label>
-                        <input type="text" disabled class="form-control" id="lastName" value="">
+                        <input type="text" disabled class="form-control" id="lastName" value="${localStorage.getItem('lastName')}">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone: </label>
-                        <input type="text" disabled class="form-control" id="phone" value="">
+                        <input type="text" disabled class="form-control" id="phone" value="${localStorage.getItem('phone')}">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address: </label>
-                        <input type="text" disabled class="form-control" id="address" value="">
+                        <input type="text" disabled class="form-control" id="address" value="${localStorage.getItem('address')}">
                     </div>
                 </form>
             </div>
@@ -109,19 +108,19 @@ function showFormRent(id) {
                     </div>
                     <div class="mb-3">
                         <label for="firstName1" class="form-label">Owner's First Name: </label>
-                        <input type="text" disabled class="form-control" id="firstName1" value="">
+                        <input type="text" disabled class="form-control" id="firstName1">
                     </div>
                     <div class="mb-3">
                         <label for="lastName1" class="form-label">Owner's Last Name: </label>
-                        <input type="text" disabled class="form-control" id="lastName1" value="">
+                        <input type="text" disabled class="form-control" id="lastName1">
                     </div>
                     <div class="mb-3">
                         <label for="phone1" class="form-label">Owner's Phone: </label>
-                        <input type="text" disabled class="form-control" id="phone1" value="">
+                        <input type="text" disabled class="form-control" id="phone1">
                     </div>
                     <div class="mb-3">
                         <label for="address1" class="form-label">Owner's Address: </label>
-                        <input type="text" disabled class="form-control" id="address1" value="">
+                        <input type="text" disabled class="form-control" id="address1">
                     </div>
                 </form>
             </div>
@@ -134,20 +133,32 @@ function showFormRent(id) {
                 </div>
                 <div class="mb-3">
                     <label for="address2" class="form-label">Apartment address: </label>
-                    <input type="text" disabled class="form-control" id="address2" value="">
+                    <input type="text" disabled class="form-control" id="address2">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Apartment Price: </label>
-                    <input type="text" disabled class="form-control" id="price" value="">
+                    <input type="text" disabled class="form-control" id="price">
                 </div>
                 <div class="mb-3">
                     <label for="startDate" class="form-label">Start Date: </label>
-                    <input type="date" class="form-control" id="startDate" value="">
+                    <input type="date" class="form-control" id="startDate">
                 </div>
             </div>
-            <button type="button" class="btn btn-primary mt-3">Submit</button>
-            <button type="button" class="btn btn-danger mt-3">Cancel</button>
-        </div>`
+            <button type="button" class="btn btn-primary mt-3" onclick="rentApartment(${id})">Submit</button>
+            <button type="button" class="btn btn-danger mt-3" onclick="loadData()">Cancel</button>
+        </div>`;
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/apartments/" + id + "/detail",
+        success: function (apartment) {
+            document.getElementById('firstName1').value = apartment.user.firstName;
+            document.getElementById('lastName1').value = apartment.user.lastName;
+            document.getElementById('phone1').value = apartment.user.phoneNumber;
+            document.getElementById('address1').value = apartment.user.address;
+            document.getElementById('address2').value = apartment.address + ", " + apartment.ward + ", " + apartment.district;
+            document.getElementById('price').value = apartment.price;
+        }
+    })
 }
 
 function rentApartment(id) {

@@ -10,17 +10,20 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         html {
             color: #333;
             font-size: 62.5%;
             font-family: 'Open Sans', sans-serif;
         }
+
         .main {
             background: #f1f1f1;
             min-height: 100vh;
             display: flex;
             justify-content: center;
         }
+
         .form {
             width: 360px;
             min-height: 100px;
@@ -30,11 +33,13 @@
             border-radius: 2px;
             margin: 24px;
             align-self: center;
-            box-shadow: 0 2px 5px 0 rgba(51,62,73,.1);
+            box-shadow: 0 2px 5px 0 rgba(51, 62, 73, .1);
         }
+
         .form .heading {
             font-size: 2rem;
         }
+
         .form .desc {
             text-align: center;
             color: #636d77;
@@ -113,8 +118,8 @@
         }
     </style>
     <script>
-        function SignUpform(){
-            let str=`  <div class="form" id="form-1">
+        function SignUpform() {
+            let str = `  <div class="form" id="form-1">
         <h3 class="heading">Thành viên đăng ký</h3>
 
         <div class="spacer"></div>
@@ -171,11 +176,13 @@
         <button class="form-submit" onclick="signUp()">Đăng ký</button>
         <button class="form-submit" onclick="cancel()">Hủy</button>
     </div>`
-            document.getElementById("formSignin").innerHTML=str;
+            document.getElementById("formSignin").innerHTML = str;
         }
-        function cancel(){
-           window.location.href="login.html";
+
+        function cancel() {
+            window.location.href = "login.html";
         }
+
         function login() {
             let username = $("#username1").val();
             let password = $("#password1").val();
@@ -192,41 +199,50 @@
                 url: "http://localhost:8080/api/login",
                 data: JSON.stringify(user),
                 success: function (data) {
-                    window.location.href="../index.html";
-                    console.log(data.id);
-                    console.log(data.accessToken)
                     localStorage.setItem('token', data.accessToken)
                     // showList(data.accessToken)
-                    localStorage.setItem('name',data.name);
-                    localStorage.setItem('id',data.id)
-                    console.log(data.name)
+                    localStorage.setItem('name', data.name);
+                    localStorage.setItem('id', data.id);
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost:8080/api/" + data.id,
+                        success: function (user) {
+                            localStorage.setItem('firstName', user.firstName);
+                            localStorage.setItem('lastName', user.lastName);
+                            localStorage.setItem('email', user.email);
+                            localStorage.setItem('phone', user.phoneNumber);
+                            localStorage.setItem('image', user.image);
+                            localStorage.setItem('address', user.address);
+                            localStorage.setItem('password', user.password);
+                        }
+                    })
+                    window.location.href = "../index.html";
                 },
                 error:
-                function (data){
-                    alert("sai tên đăng nhập hoặc mật khẩu")
-
-                }
-
+                    function (data) {
+                        alert("sai tên đăng nhập hoặc mật khẩu")
+                    }
             })
         }
-        function signUp(){
-            let firstname=$('#firstname').val();
-            let lastname=$('#lastname').val();
+
+        function signUp() {
+            let firstname = $('#firstname').val();
+            let lastname = $('#lastname').val();
             let email = $('#email').val();
             let image = $('#image').val();
-            let phoneNumber =$('#phonenumber').val();
+            let phoneNumber = $('#phonenumber').val();
             let address = $('#address').val();
             let userName = $('#username').val();
             let password = $('#password').val();
-            let user={
+            let user = {
                 firstName: firstname,
                 lastName: lastname,
-                email:email,
-                image:image,
-                phoneNumber:phoneNumber,
-                address:address,
-                username:userName,
-                password:password,
+                email: email,
+                image: image,
+                phoneNumber: phoneNumber,
+                address: address,
+                username: userName,
+                password: password,
                 roles: [{
                     id: 2
                 }]
@@ -257,9 +273,9 @@
             })
 
 
-
         }
-        function formSignIn(){
+
+        function formSignIn() {
             let str = `<div class="main"> <div class="form" id="form-2">
     <h3 class="heading">Đăng nhập</h3>
 
@@ -287,10 +303,11 @@
 
 </div>
 `
-            document.getElementById("formSignin").innerHTML=str;
+            document.getElementById("formSignin").innerHTML = str;
         }
-        function editform(){
-            let str=` <div class="form-group">
+
+        function editform() {
+            let str = ` <div class="form-group">
             <label for="fullname" class="form-label">FirstName:</label>
             <input id="firstname" name="firstname" type="text" class="form-control" value="">
             <span class="form-message"></span>
@@ -341,7 +358,10 @@
 
         <button class="form-submit" onclick="edit()">Update</button>`
         }
-        function edit(){}
+
+        function edit() {
+        }
+
         function showList(token) {
             $.ajax({
                 type: "GET",
@@ -381,7 +401,7 @@
     </script>
 
 </head>
-<script >
+<script>
     // Đối tượng `Validator`
     function Validator(options) {
         function getParent(element, selector) {
@@ -454,7 +474,7 @@
                         var enableInputs = formElement.querySelectorAll('[name]');
                         var formValues = Array.from(enableInputs).reduce(function (values, input) {
 
-                            switch(input.type) {
+                            switch (input.type) {
                                 case 'radio':
                                     values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
                                     break;

@@ -10,47 +10,47 @@ function containerComponent() {
     document.getElementById('content').innerHTML = str;
 }
 
-function menuComponent() {
-    let str = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n" +
-        "  <div class=\"container-fluid\">\n" +
-        "    <img src='http://www.thp.com.vn/wp-content/uploads/2017/01/Logo_THP_Group.png' width='40px' height='40px' class=\"navbar-brand\" href=\"#\">THP Group</img>\n" +
-        "    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
-        "      <span class=\"navbar-toggler-icon\"></span>\n" +
-        "    </button>\n" +
-        "    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n" +
-        "      <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n" +
-        "        <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link active\" aria-current=\"page\" href=\"Home.html\">Home</a>\n" +
-        "        </li>\n" +
-        "        <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
-        "        </li>\n" +
-        " <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link\" id='navbarDropdown'></a>\n" +
-        "        <li class=\"nav-item dropdown\">\n" +
-        "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
-        "            Dropdown\n" +
-        "          </a>\n" +
-        "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n" +
-        "            <li><hr class=\"dropdown-divider\"></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n" +
-        "          </ul>\n" +
-        "        </li>\n" +
-        "        <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link\" onclick='logout()' style='cursor: pointer'>Log Out</a>\n" +
-        "        </li>\n" +
-        "      </ul>\n" +
-        "      <form class=\"d-flex\">\n" +
-        "        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n" +
-        "        <button class=\"btn btn-outline-success\" type=\"submit\">Search</button>\n" +
-        "      </form>\n" +
-        "    </div>\n" +
-        "  </div>\n" +
-        "</nav>"
-    document.getElementById('menu').innerHTML = str;
-}
+// function menuComponent() {
+//     let str = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n" +
+//         "  <div class=\"container-fluid\">\n" +
+//         "    <img src='http://www.thp.com.vn/wp-content/uploads/2017/01/Logo_THP_Group.png' width='40px' height='40px' class=\"navbar-brand\" href=\"#\">THP Group</img>\n" +
+//         "    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
+//         "      <span class=\"navbar-toggler-icon\"></span>\n" +
+//         "    </button>\n" +
+//         "    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n" +
+//         "      <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n" +
+//         "        <li class=\"nav-item\">\n" +
+//         "          <a class=\"nav-link active\" aria-current=\"page\" href=\"Home.html\">Home</a>\n" +
+//         "        </li>\n" +
+//         "        <li class=\"nav-item\">\n" +
+//         "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
+//         "        </li>\n" +
+//         " <li class=\"nav-item\">\n" +
+//         "          <a class=\"nav-link\" id='navbarDropdown'></a>\n" +
+//         "        <li class=\"nav-item dropdown\">\n" +
+//         "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
+//         "            Dropdown\n" +
+//         "          </a>\n" +
+//         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
+//         "            <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n" +
+//         "            <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n" +
+//         "            <li><hr class=\"dropdown-divider\"></li>\n" +
+//         "            <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n" +
+//         "          </ul>\n" +
+//         "        </li>\n" +
+//         "        <li class=\"nav-item\">\n" +
+//         "          <a class=\"nav-link\" onclick='logout()' style='cursor: pointer'>Log Out</a>\n" +
+//         "        </li>\n" +
+//         "      </ul>\n" +
+//         "      <form class=\"d-flex\">\n" +
+//         "        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n" +
+//         "        <button class=\"btn btn-outline-success\" type=\"submit\">Search</button>\n" +
+//         "      </form>\n" +
+//         "    </div>\n" +
+//         "  </div>\n" +
+//         "</nav>"
+//     document.getElementById('menu').innerHTML = str;
+// }
 
 function mainHomeComponent() {
     let str = "<div class=\"col-3\" id='category'>Left</div>\n" +
@@ -86,6 +86,13 @@ function logout() {
     window.localStorage.removeItem('name')
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('id')
+    window.localStorage.removeItem('firstName');
+    window.localStorage.removeItem('lastName');
+    window.localStorage.removeItem('email');
+    window.localStorage.removeItem('phone');
+    window.localStorage.removeItem('image');
+    window.localStorage.removeItem('address');
+    window.localStorage.removeItem('password');
     window.location.href = "User/login.html"
 }
 
@@ -127,6 +134,7 @@ function formTable() {
 }
 
 function infoUser(id) {
+
     $.ajax({
 
         type: "GET",
@@ -148,7 +156,7 @@ function infoUser(id) {
         <div class="spacer"></div>
 edit
         <div class="form-group">
-            <label for="fullname" class="form-label">FistName:</label>
+            <label for="fullname" class="form-label">FirstName:</label>
             <input id="firstnameedit" name="firstname" type="text" class="form-control" value="${firstname}">
             <span class="form-message"></span>
         </div>
@@ -199,7 +207,7 @@ edit
         <button class="form-submit" onclick="editUser(${id})">Thay Đổi</button>
         <button class="form-submit" onclick="deleteUser(${id})">Xóa Tài Khoản </button>
     </div>\``
-            document.getElementById("post").innerHTML = str;
+            document.getElementById("main").innerHTML = str;
         }
     })
 }

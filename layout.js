@@ -23,20 +23,16 @@ function menuComponent() {
             ${localStorage.getItem('name')}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" onclick="infoUser(${localStorage.getItem('id')})">My information</a></li>
+            <li><button class="dropdown-item" onclick="infoUser(${localStorage.getItem('id')})">My information</button></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <button class="nav-link btn btn-warnings" onclick="logout()" href="#" tabindex="-1" aria-disabled="true">Disabled</button>
+          <button class="nav-link btn btn-warnings" onclick="logout()" href="#" tabindex="-1" aria-disabled="true">Logout</button>
         </li>
       </ul>
-<!--      <form class="d-flex">-->
-<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--      </form>-->
     </div>
   </div>
 </nav>`
