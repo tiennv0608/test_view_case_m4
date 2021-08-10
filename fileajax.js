@@ -52,7 +52,7 @@ function showDetail(id) {
 }
 
 function showFormRent(id) {
-    console.log(id);
+    console.log(localStorage.getItem('user'));
     document.getElementById('main').innerHTML = `<div class="col-12">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">

@@ -85,7 +85,8 @@ function loaddata() {
 function logout() {
     window.localStorage.removeItem('name')
     window.localStorage.removeItem('token')
-    window.location.href = "login.html"
+    window.localStorage.removeItem('id')
+    window.location.href = "User/login.html"
 }
 
 function checkToken() {
@@ -231,7 +232,8 @@ function editUser(id){
         data: JSON.stringify(user),
         url: "http://localhost:8080/api/edit/" +id,
         success: function () {
-            formTable(), alert("bạn đã cập nhật thành công")
+            alert("bạn đã cập nhật thành công")
+            window.location.href = "../../index.html"
         },
         error : console.log("abc")
     })
@@ -253,7 +255,7 @@ function deleteUser(id){
             success: function (){
                 txt = "Bạn đã xóa thành công";
                 alert(txt)
-                formTable()
+                logout();
             }
         })
     } else {
