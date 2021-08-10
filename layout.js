@@ -61,6 +61,14 @@ function searchComponent() {
         <input type="number" class="form-control" id="floor">
       </div>
       <div class="mb-3">
+        <label class="form-label" id="price">Khoảng giá</label>
+        <hr>
+        <label class="form-label">Giá thấp</label>
+        <input type="number" class="form-control" id="low">
+        <label class="form-label">Giá cao</label>
+        <input type="number" class="form-control" id="high">
+      </div>
+      <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Quận</label>
         <select class="form-control" name="district" id="district" onchange="getAllWards()"></select>
       </div>
@@ -68,7 +76,7 @@ function searchComponent() {
         <label for="exampleInputPassword1" class="form-label">Phường</label>
         <select class="form-control" name="ward" id="ward"></select>
       </div>
-      <button type="button" class="btn btn-outline-success" onclick="searchApartment()">Search</button>
+      <button type="button" class="btn btn-outline-success" onclick="searchByPrice()">Search</button>
     </form>`;
 }
 
