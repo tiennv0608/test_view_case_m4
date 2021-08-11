@@ -93,7 +93,7 @@ function logout() {
     window.localStorage.removeItem('image');
     window.localStorage.removeItem('address');
     window.localStorage.removeItem('password');
-    window.location.href = "User/login.html"
+    window.location.href = "../../../User/login.html"
 }
 
 function checkToken() {
@@ -241,7 +241,7 @@ function editUser(id){
         url: "http://localhost:8080/api/edit/" +id,
         success: function () {
             alert("bạn đã cập nhật thành công")
-            window.location.href = "../../index.html"
+            window.location.href = "../../../index.html"
         },
         error : console.log("abc")
     })
